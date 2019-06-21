@@ -9,43 +9,37 @@
                     <li><a href="{{ route('cliente.index') }}">Clientes</a></li>
                     <li class="active">Detalhe</li>
                 </ol>
-
                 <div class="panel-body">
                     <p><b>Cliente: </b>{{ $cliente->nome }}</p>
                     <p><b>E-mail: </b>{{ $cliente->email }}</p>
                     <p><b>Endereço: </b>{{ $cliente->endereco }}</p>
-                    
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Título</th>
-                                <th>Número</th>                                
+                                <th>Número</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
-                        <tbody>                           
+                        <tbody>
                             @foreach($cliente->telefones as $telefone)
                             <tr>
                                 <th scope="row">{{ $telefone->id }}</th>
                                 <td>{{ $telefone->titulo }}</td>
-                                <td>{{ $telefone->telefone }}</td>                                
+                                <td>{{ $telefone->telefone }}</td>
                                 <td>
-                                    <a class="btn btn-default" href="{{ route('home') }}">Editar</a>
-                                    <a class="btn btn-danger" href="javascript:(confirm('Deletar esse registro?') ? window.location.href='{{ route('home') }}' : false)">Deletar</a>
+                                    <a class="btn btn-default" href="{{ route('telefone.editar', $telefone->id) }}">Editar</a>
+                                    <a class="btn btn-danger" href="javascript:(confirm('Deletar esse registro?') ? window.location.href='{{ route('telefone.deletar', $telefone->id) }}' : false)">Deletar</a>
                                 </td>
                             </tr>
                             @endforeach
-                            
                         </tbody>
-                        
                     </table>
-
                     <p>
-                        <a class="btn btn-info" href="{{route('home')}}">Adicionar Telefone</a>
+                          <a class="btn btn-primary" href="{{route('telefone.adicionar', $cliente->id)}}">Adicionar Telefone</a>
                     </p>
-                    
-
                 </div>
             </div>
         </div>
