@@ -56,7 +56,7 @@
         }
 
         .title {
-            font-size: 100px;
+            font-size: 80px;
             color: #f2f2f2
         }
 
