@@ -14,13 +14,23 @@
                 <p><b>Cliente: </b>{{ $cliente->nome }}</p> 
                     <form action="{{ route('telefone.salvar', $cliente->id) }}" method="post">
                         {{ csrf_field() }}
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }}">
                             <label for="titulo">Título</label>
                             <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Título do telefone">
+                            @if($errors->has('titulo'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('tiulo') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                        <div class="form-group">
-                            <label for="email">Número</label>
+                        <div class="form-group {{ $errors->has('telefone') ? 'has-error' : '' }}">
+                            <label for="telefone">Número</label>
                             <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Número do telefone">
+                            @if($errors->has('telefone'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('telefone') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <button class="btn btn-primary">Adicionar</button>
                     </form>    
